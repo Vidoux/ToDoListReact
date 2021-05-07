@@ -1,7 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 
-function Header(props) {
-  return <h1 onClick={props.fn}>{props.title}</h1>;
+function Header({date, nom, prenom}) {
+
+	return <h1>{nom}{prenom}{date}</h1>;
 }
 
-export default Header;
+const mapStateToProps = function (state) {
+  return {date: state.date, nom: state.nom, prenom: state.prenom };
+};
+
+export default connect(mapStateToProps)(Header);

@@ -1,7 +1,7 @@
 import React from "react";
 
-function Footer() {
-  return <footer>bla bla</footer>;
+function Footer(props) {
+  return <footer>©team des meilleurs{props.nom}{props.prénom}</footer>;
 }
 
 export default Footer;

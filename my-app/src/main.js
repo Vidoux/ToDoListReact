@@ -1,25 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App.js";
+import {ToDoListMain} from "./ToDoListMain.js";
 
 import { Provider } from "redux";
 import { createStore } from "redux";
-import { ADD_ITEMS } from "./actions.js";
+import {DATE} from "./action";
 
-let store = createStore(function (state, action) {
+let initialState = {  date: new Date(), nom: "le nom", prenom: "le prénom"}
+let reducer = function (state, action) {
   switch (action.type) {
-    case ADD_ITEMS:
+    default:
       return {
         ...state,
-        items: [...state.items, action.value];
-      }
+      };
   }
-});
+};
+
+let store = createStore(reducer,initialState);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
+  <Provider store={store}>  
+    <ToDoListMain />
   </Provider>,
   document.getElementById("root")
 );
