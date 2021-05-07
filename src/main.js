@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./store.js";
 
-import Main from "./Main.js";
+import App from "./App.js";
 
 import { DATE } from "./action";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <App />
   </Provider>,
   document.getElementById("root")
 );

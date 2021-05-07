@@ -1,12 +1,15 @@
 import React from "react";
-import Header from "./Header.js";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store.js";
 
-function Main() {
-  return (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-  );
-}
+import App from "./App.js";
 
-export default Main;
+import { DATE } from "./action";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
