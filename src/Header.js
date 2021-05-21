@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 
 function Header({ date, nom, prenom }) {
   return (
-    <h1>
-      {nom}
-      {prenom}
-      {date.toLocaleString()}
-    </h1>
+
+      <h1>
+        {nom}
+        {prenom}
+        {date.toLocaleString()}
+      </h1>
   );
 }
 
