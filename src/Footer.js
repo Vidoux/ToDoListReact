@@ -1,7 +1,13 @@
 import React from "react";
+import {connect} from "react-redux";
 
-function Footer(props) {
-  return <footer>©team des meilleurs{props.nom}{props.prénom}</footer>;
+function Footer({prenom, nom}) {
+  return <footer>©team des meilleurs{nom}{prenom}</footer>;
 }
 
-export default Footer;
+
+const mapStateToProps = function (state) {
+  return { nom: state.nom, prenom : state.prenom};
+};
+
+export default connect(mapStateToProps)(Footer);

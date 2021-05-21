@@ -1,26 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function AddList() {
+
+
+function AddList({dispatch, nbItem}) {
     const [input, setInput] = React.useState("");
 
-
-
-    function updateInput(input){
-        setInput(input);
-    };
-
     function AddTodo(){
-
-
-        setInput("");
-    };
+        console.log("nbItem ", nbItem);
+        if(input !== ""){
+            dispatch({type: 'addTodo',
+                item: {id: nbItem,message: input,
+                    date: new Date(), checked: false}
+            })
+            console.log("add Todo", input);
+            setInput("");
+        }
+    }
 
     return (
         <div>
             <input
-                onChange={e => updateInput(e.target.value)}
+                onChange={e => setInput(e.target.value)}
                 value={input}
+                id={"message"}
             />
             <button className="add-todo" onClick={AddTodo}>
                 Add Todo
@@ -30,7 +33,7 @@ function AddList() {
 }
 
 const mapStateToProps = function (state) {
-    return {};
+    return { nbItem: state.nbItem};
 };
 
 export default connect(mapStateToProps)(AddList);

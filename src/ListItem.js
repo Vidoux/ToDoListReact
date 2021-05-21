@@ -1,14 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function ListItem({message, date}) {
- return(
-     <h1>{message} à cette date: {date}</h1>
- );
+function ListItem({item, dispatch}) {
+    console.log(item);
+    function updateState(){
+        console.log("change state");
+        dispatch({
+            type: 'changeStateElement',
+            index: item.id
+        })
+    }
+    return(
+        <div >
+            <p>________________________________</p>
+            <input type="checkbox" checked={item.checked} onChange={updateState}/>
+            <h1>{item.message}</h1>
+            <h2>{item.date.toLocaleString()}</h2>
+            <p>________________________________</p>
+        </div>
+    );
 }
-
-const mapStateToProps = function (state) {
-    return { message: state.message, date: state.message};
-};
-
-export default connect(mapStateToProps)(ListItem);
+export default connect()(ListItem);
