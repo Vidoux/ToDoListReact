@@ -10,10 +10,11 @@ function ListItem({item, dispatch}) {
             index: item.id
         })
     }
+
     return(
         <div >
             <p>________________________________</p>
-            <input type="checkbox" checked={item.checked} onChange={updateState}/>
+            <input type="checkbox" onChange={updateState}/>
             <h1>{item.message}</h1>
             <h2>{item.date.toLocaleString()}</h2>
             <p>________________________________</p>

@@ -1,19 +1,26 @@
 import { createStore } from "redux";
 
 let initialState = {
-  date: new Date(),
-  nom: "le nom",
-  prenom: "le prénom",
-  items : []
+  noms: "VIDAL Tanguy, BERNARD Hugo, LOPEZ Frédéric, SACKO Julien",
+  items : [],
+  onlyChecked : false//Show only checked task
 };
 
 let nextId = 0;
 
 let reducer = function (state, action) {
   switch (action.type) {
-    case "changeStateElement":
-      console.log("change state", action);
+    case "ChangefilterOnlyChecked":
+      let checkedState = !state.onlyChecked;
       let newState={
+        ...state,
+        onlyChecked: checkedState
+      };
+      console.log(newState);
+      return  newState
+
+    case "changeStateElement":
+      let newStatebis={
         ...state,
         items: state.items.map(function(item){
           if(item.id === action.index){
@@ -22,8 +29,8 @@ let reducer = function (state, action) {
           return item;
         })
       };
-      console.log(newState);
-      return newState;
+      console.log(newStatebis);
+      return newStatebis;
     case "addTodo":
       nextId += 1;
       action.item.id = nextId;
